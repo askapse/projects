@@ -115,7 +115,6 @@ public class The_Cafe {
 
 	}
 		 
-
 	// variable declaration
 	private JFrame loader;
 	private JLabel hints;
