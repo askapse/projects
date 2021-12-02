@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="./hotel/css/home.css">
+</head>
+
+<body>
+    <!-- home section -->
+    <section class="home" id="home">
+
+        <h4 class="tagline">
+            Let's Serve Better
+        </h4>
+
+        <div class="adddish" id="adddish">
+            <fieldset>
+                <legend>Add New Dish</legend>
+
+                <fieldset class="inputstyle">
+                    <legend>Dish Name</legend>
+                    <input type="text" name="dishname" id="dishname">
+                </fieldset>
+                <fieldset class="inputstyle">
+                    <legend>Select Dish Image</legend>
+                    <input type="file" id="imageselect" class="imageselect" name="img">
+                </fieldset>
+                <div class="pb">
+                    <fieldset class="inputstyle price">
+                        <legend>Price</legend>
+                        <input type="text" name="price" id="price">
+                    </fieldset>
+                    <button type="button" id="adddishbtn" class="adddishbtn">Add Dish</button>
+                </div>
+            </fieldset>
+
+        </div>
+    </section>
+    
+    <section class="dishes" id="dishes">
+    	<table class="userdishlist" id="userdishlist">
+    		<tr class="colhead">
+    			<th>Image</th>
+    			<th>Dish Name</th>
+    			<th>Price</th>
+    			<th>&nbsp </th>
+    		</tr>    		
+    		
+    		
+    	</table>
+    </section>
+    
+    
+    
+    <script src="./hotel/js/home.js"></script>
+</body>
+
+</html>

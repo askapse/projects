@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Ballet');
+    </style>
+
+    <script src="./js/JQuery.3.6.0.js"></script>
+
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="icon" href="./img/foodie.png">
+    
+    <title>Foodie...</title>
+</head>
+<body id="body">
+    <nav class="navbar ">
+        <div class="title">foodie</div>
+
+        <div class="blank"></div>
+        <div class="reg" id="reg">
+            <div class="dropdownpos" id="regtext">Register ></div>
+            <ul class="reglist dropdownpos" id="reglist">
+                <li id="creg">Customer</li>
+                <li id="hreg">Hotel</li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="work" id="work">
+        <section class="clogin">
+            <div class="sectitle" id="clgsec">Customer Login</div>
+
+            <div class="clogininput inputstyle" id="clogininput">
+                <fieldset>
+                    <legend>Username</legend>
+                    <input type="text" id="cusername">
+                </fieldset>
+                <fieldset>
+                    <legend>Password</legend>
+                    <input type="password" id="cpassword">
+                </fieldset>
+
+                <div class="lgbtncontainer">
+                    <button class="loginbtn" id="cloginbtn">Login</button>
+                </div>
+
+                <div class="options">
+                    <label for="showhidepass"><input type="checkbox" id="cshowhidepass">Show Password</label>
+                    <label id="cpassforgot">Forgot Password</label>
+                </div>
+            </div>
+        </section>
+
+        <section class="hlogin">
+            <div class="sectitle" id="hlgsec">Hotel Login</div>
+
+            <div class="hlogininput inputstyle" id="hlogininput">
+                <fieldset>
+                    <legend>Username</legend>
+                    <input type="text" id="husername">
+                </fieldset>
+                <fieldset>
+                    <legend>Password</legend>
+                    <input type="password" id="hpassword">
+                </fieldset>
+
+                <div class="lgbtncontainer">
+                    <button class="loginbtn" id="hloginbtn">Login</button>
+                </div>
+
+                <div class="options">
+                    <label for="showhidepass"><input type="checkbox" id="hshowhidepass">Show Password</label>
+                    <label id="hpassforgot">Forgot Password</label>
+                </div>
+            </div>
+        </section>
+        <section class="changable" id="changable">
+        <div class="closer">&times;</div>
+        <div class="container" id="container">
+
+        </div>
+        </section>
+      </div>
+        
+        <div class="layer" id="layer"></div>
+        
+        
+	    <script src="./js/index.js"></script>
+</body>
+</html>

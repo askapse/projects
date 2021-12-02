@@ -1,0 +1,1 @@
+loadcontact(1);

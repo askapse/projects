@@ -1,0 +1,46 @@
+/* .profile{
+    
+} */
+
+#fname{
+    border-bottom: 0.2px solid black;
+    margin: 0 0 5px 0;
+}
+
+.updateemail>input{
+    width: 78%;
+    padding: 0 2px;
+    border: none;
+}
+
+.updateemail>input:focus{
+    outline: none;
+}
+
+.updateemail>button{
+    width:19%;
+}
+
+button{
+    height: 20px;
+    background: navy;
+    color: white;
+}
+
+.updateinfo{
+    width: 600px;
+    margin: auto;
+    text-align: right;
+}
+
+
+/* repsonsiveness */
+@media screen and (max-width:600px){
+    fieldset{
+        width: 98%;
+    }
+
+    .updateinfo{
+        width: 98%;
+    }
+}

@@ -1,0 +1,14 @@
+.change{
+    
+}
+
+/* responsivenes */
+@media screen and (max-width:600px) {
+    .change{
+        width:99.5%;
+    }
+    
+    fieldset{
+        width: 100%;
+    }
+}

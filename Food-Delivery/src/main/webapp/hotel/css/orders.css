@@ -1,0 +1,143 @@
+.selectdate {
+	margin: 5px 0;
+	text-align: center;
+}
+
+.ordersdate {
+	width: 40%;
+	margin: 0 10px;
+	border: 0.5px solid black;
+}
+
+.showorders {
+	background: navy;
+	color: white;
+	font-weight: bold;
+	height: 22px;
+}
+
+.orders {
+	width: 600px;
+	border-top: 1px solid black;
+	margin: 10px 0;
+}
+
+.ordertable {
+	width: 100%;
+}
+
+tr>td:nth-of-type(1) {
+	width: 75px;
+	text-align: center;
+}
+
+tr>td:nth-child(2) {
+	width: 375px;
+	padding-left: 5px;
+}
+
+tr>td:nth-child(3) {
+	width: 80px;
+	text-align: center;
+}
+
+tr>td:nth-child(4) {
+	width: 50px;
+	text-align: center;
+}
+
+.showordbtn {
+	color: white;
+	background: navy;
+	font-weight: bold;
+	width: 90%;
+}
+
+/* ..........poopup ............... */
+.ordermanager {
+	box-shadow: 2px 2px 10px gray;
+	width: 600px;
+	border-radius: 5px;
+	background: white;
+	position: absolute;
+	top: 20px;
+}
+
+.ordermanager>p {
+	border-bottom: 0.5px solid black;
+}
+
+.odmanagerhead {
+	font-size: 28px;
+	font-weight: bold;
+	width: 20px;
+	float: right;
+	margin: -25px 0 0 0;
+}
+
+.odmanagerhead:hover {
+	color: red;
+	cursor: pointer;
+}
+
+.ordinfo {
+	margin: 10px auto;
+	width: 100%;
+}
+
+.inforow>td {
+	border-bottom: 0.5px dotted black;
+}
+
+.inforow>td:nth-child(1) {
+	width: 150px;
+	text-align: left;
+}
+
+.dishrow>td {
+	border: none;
+}
+
+.dishrow>td:nth-child(1) {
+	text-align: left;
+}
+
+.dishes>tr:nth-child(even) {
+	background: rgba(177, 171, 171, 0.384);
+}
+
+.dishprice {
+	text-align: center;
+}
+
+.bill {
+	background: hotpink;
+	color: white;
+	font-weight: bolder;
+}
+
+.buttons{
+	width:99%;
+	margin:10px 0;
+}
+
+.btn {
+	color: white;
+	font-weight: bold;
+	height: 24px;
+	width: 90px;
+	margin: 0 20px;
+}
+
+/* responsiveness.............. */
+@media screen and (max-width:600px) {
+	.ordermanager {
+		width: 99%;
+	}
+	.selectdate {
+		width: 100%;
+	}
+	.orders {
+		width: 100%;
+	}
+}

@@ -1,0 +1,46 @@
+.heading{
+    text-align: center;
+    /* font-weight: bold; */
+    font-size: 20px;
+    margin: 0 0 30px 0;
+}
+
+/* fildset and input styling */
+fieldset{
+    width: 400px;
+    margin:4px auto;
+}
+
+legend{
+    font-size: 12px;
+}
+
+fieldset>input{
+    width:98%;
+    border: none;
+    background: none;
+    padding: 0 5px;
+    font-size: 16px;
+}
+
+fieldset>input:focus{
+    outline: none;
+}
+
+button{
+    color: white;
+    background: navy;
+    width: 105px;
+    height: 22px;
+    margin: 20px 25px;
+}
+
+.op{
+    text-align: center;
+}
+
+.errormsg{
+    text-align: center;
+    color: rgb(231, 130, 130);
+    margin: 10px 0;
+}

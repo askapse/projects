@@ -1,0 +1,69 @@
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="./customer/css/profile.css">
+</head>
+<body>
+     <!-- profile section -->
+     <section class="profile" id="profile">
+        <fieldset>
+            <legend>Personal Info</legend>
+            <fieldset class="inputstyle">
+                <legend>Name</legend>
+                <input type="text" name="fname" id="fname" placeholder="First Name" onpaste="return false">
+                <input type="text" name="lname" id="lname" placeholder="Last Name" onpaste="return false">
+            </fieldset>
+            <fieldset class="inputstyle">
+                <legend>DOB</legend>
+                <input type="date" name="dob" id="dob" onpaste="return false">
+            </fieldset>
+        </fieldset>
+        <fieldset>
+            <legend>Address</legend>
+            <fieldset class="inputstyle">
+                <legend>Home</legend>
+                <input type="text" name="hotelname" id="hotelname" onpaste="return false">
+            </fieldset>
+            <fieldset class="inputstyle">
+                <legend>District</legend>
+                <input type="text" name="dist" id="dist" onpaste="return false">
+            </fieldset>
+            <fieldset class="inputstyle">
+                <legend>Sub-district</legend>
+                <input type="text" name="subdist" id="subdist" onpaste="return false">
+            </fieldset>
+            <fieldset class="inputstyle">
+                <legend>City</legend>
+                <input type="text" name="city" id="city" onpaste="return false">
+            </fieldset>
+            <fieldset class="inputstyle">
+                <legend>Area</legend>
+                <input type="text" name="area" id="area" onpaste="return false"> 
+            </fieldset>           
+            <fieldset class="inputstyle">
+                <legend>ZipCode</legend>
+                <input type="text" name="zipcode" id="zipcode" onpaste="return false">
+            </fieldset>
+        </fieldset>
+        <fieldset>
+            <legend>Contact</legend>
+            <fieldset class="inputstyle">
+                <legend>Mobile</legend>        
+                <input type="text" name="mobile" id="mobile" onpaste="return false">
+            </fieldset>
+            <fieldset class="inputstyle">
+                <legend>Email</legend>                
+                <div class="updateemail" id="updateemail">
+                    <input type="text" name="email" id="email">
+                    <button type="button" id="emailupdate">Update</button>
+                </div>
+            </fieldset>
+        </fieldset>
+        <div class="updateinfo">
+            <button type="button" id="updateinfobtn" class="updateinfobtn">Update Info</button>                    
+        </div>
+    </section>
+        
+    
+    <script src="./customer/js/profile.js"></script>
+</body>
+</html>

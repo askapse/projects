@@ -1,0 +1,85 @@
+*{
+    padding: 0;
+    margin:0;
+}
+
+
+
+.navbar{
+    max-width: 100%;
+    background: rgb(177, 105, 206);
+    display: flex;
+}
+
+.title{
+    font-size: 28px;
+    font-family:'Ballet';
+    font-weight: bold;
+    color:orange;
+    padding: 0 25px;
+    width: 33.333333%;
+}
+
+.menu{
+    width: 33.33333333%;
+}
+
+.menulist{
+    display: flex;
+    margin: auto;
+}
+
+.menulist>li{
+    list-style: none;
+}
+
+.menulist>li>a{
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.search{
+    margin-top: 33px;
+    text-align: right;
+    float: right; 
+    width:33.333333%;    
+}
+
+.search>input{
+    background: none;
+    border:0.5px solid blue;
+    border-radius: 3px;
+}
+
+.srchbtn{
+    background: none;
+    border:none;
+}
+
+
+
+
+
+
+
+@media  screen and (max-width:660px){
+    .search{
+        z-index: 1;
+        margin: 25px 0 0 0;
+        width: 50%;
+    }
+
+    .title{
+        width:60px;
+    }
+}
+
+
+@media  screen and (max-width:570px){
+    .search{
+        position: absolute;
+        top:10px;
+        width: 100%;
+    }
+}
+

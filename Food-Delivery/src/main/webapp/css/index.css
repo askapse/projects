@@ -1,0 +1,409 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.navbar{
+    max-width: 100%;
+    background: rgb(177, 105, 206);
+    display: flex;
+    height: 50px;
+}
+
+.title {
+    font-size: 28px;
+    font-family: 'Ballet';
+    font-weight: bold;
+    color: orange;
+    padding: 0 25px;
+    width: 33.333333%;
+}
+
+.blank{
+    width: 33.333333%;
+}
+
+.reg{
+    width: 33.333333%;
+    margin: 30px 20px 0 0;
+    cursor: default;
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+}
+
+.regtext{
+    text-align: right;
+    width: 100%;
+}
+
+.reglist{
+   z-index:10;
+   background: royalblue;
+   display: none;
+}
+
+.reglist>li{
+    border:0.5px solid rgb(163, 163, 238);
+    cursor: pointer;
+}
+
+.reglist>li:hover{
+    background: slateblue;
+    color: white;
+}
+
+.dropdownpos{
+    width: 100px;
+    list-style: none;
+    float: right;
+}
+
+/* section out of navigation start here............. */
+
+.work{
+    max-width: 600px;
+    margin: auto;
+}
+
+.sectitle{
+    text-align: center;
+    background: rgb(113, 140, 228);
+    font-size: 22px;
+    margin:10px 0;
+    cursor: default;
+}
+
+.inputstyle>fieldset{
+    border:0.8px solid black;
+    width: 300px;
+    margin: 5px auto;
+}
+
+.inputstyle>fieldset>input{
+    padding: 0 5px;
+    background: none;
+    border:none;
+    width: 300px;
+}
+
+.inputstyle>fieldset>input:focus{
+    outline: none;
+}
+
+.lgbtncontainer{
+    width: 70px;
+    margin: auto;
+}
+
+.loginbtn{
+    color:white;
+    background: rgb(14, 104, 221);
+    width: 100%;
+    height: 22px; 
+}
+
+.options{
+    width: 300px;
+    margin:10px auto;
+}
+
+.options>label:last-child{
+    float: right;
+    color: blue;
+}
+
+.options>label:last-child:hover{
+    cursor: pointer;
+}
+
+.options>label>input{
+    background: none;
+}
+
+.hlogininput{
+    display: none;
+}
+
+.changable{
+    width: 600px;
+    margin: auto;
+    position: absolute;
+    top:60px;
+    background: white;
+    border: 0.5px solid black;
+    border-radius: 5px;
+    box-shadow:gray 2px 2px 10px;
+    z-index:100;
+    display: none;
+}
+
+.changable>.closer{
+    font-size: 34px;
+    font-weight: bolder;
+    color:black;
+    margin: -8px 10px 0 0;
+    width: 8px;
+    float: right;
+}
+
+.changable>.closer:hover{
+    color: red;
+    cursor:pointer;
+}
+
+@keyframes ld{
+    0%{color:orange;}
+    25%{color:red;}
+    50%{color:green;}
+    75%{color:blue;}
+    100%{color:pink;}
+}
+
+/* .loading{
+    font-size: 28px;
+    font-family: 'Ballet';
+    font-weight: bold;
+    color: orange;
+    width:100%;
+    text-align: center;
+    margin:0 auto;
+    z-index:10;
+
+    /* border: 2px solid black; */
+    /* animation: ld 3s linear infinite;
+/* } */ 
+
+
+.layer{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: gray;
+    opacity: 0.2;
+    z-index:50;
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* responsiveness ........................... */
+@media screen and (max-width:600px){
+    .work{
+        width: 100%;
+    }
+
+    .changable{
+        width: 100%;
+    }
+}
+
+
+@media screen and (max-width:450px){
+    .resetpass{
+        width: 100%;
+        margin:0;
+    }
+}
+
+@media screen and (max-width:300px){
+    .inputstyle>fieldset{
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* password reset popup
+.resetpass{
+    background:white;
+    width: 450px;
+    border:1px solid black;
+    border-radius: 5px;
+    height: 250px;
+    position: absolute;
+    top:55px;
+    text-align: center;
+    z-index: 2;
+    box-shadow: rgb(109, 103, 134) 2px 5px 20px;
+    margin: 0 75px;
+    display: none;
+}
+
+.topbar{
+    border-bottom:1px solid black;
+}
+
+.closerp{
+    color: blue;
+    font-size: 30px;
+    font-weight: bolder;
+    text-align:right;
+    margin: -25px 0 0 0;
+}
+
+.closerp:hover{
+    color: red;
+    cursor: pointer;
+}
+
+.usernamein{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 200px;
+    margin:20px auto;
+}
+
+.passresetsubmit{
+    margin:10px auto; 
+    height: 22px;
+    width: 70px;
+    background: rgb(14, 104, 221);
+    border: none;
+}
+
+.passresetsubmit:hover{
+    color: white;
+}
+
+.msgfp{
+    width: 300px;
+    border: 0.8px solid black;
+    position: absolute;
+    top: 0px;
+    border-radius:0 0 10px 10px;
+    background: white;
+    font-size: 14px;
+    color: red;
+    margin: 0 0 0 75px;
+    display: none;
+}
+
+.msgcloser{
+    float: right;
+    background: rgb(14, 104, 221);
+    width: 45px;
+    border:1px solid rgb(14, 104, 221);
+    border-radius:3px 3px 10px 3px;   
+}
+
+
+
+.otpvalidate{
+    display: flex;
+    flex-direction: column;
+}
+
+.otp{
+    width:200px; 
+}
+
+.otpcheck{
+    margin:10px auto; 
+    height: 22px;
+    width: 70px;
+    background: rgb(14, 104, 221);
+    border: none;
+}
+
+.otpcheck:hover{
+    color: white;
+}
+
+
+
+/* hotel registartion popup styling 
+.regpop{
+    width: 450px;
+    height: 600px;
+    background: white;
+    border: 0.5px solid black;
+    border-radius: 10px;
+    box-shadow: 2px 2px 20px black;
+    position: absolute;
+    top:50px;
+    margin-left: 75px;
+}
+
+#hotelreg{
+    display: none;
+}
+
+#customerreg{
+    display: none;
+}
+/* customer registration popup styling */
+
+
+/*  hotel login section set as hidden or display none
+#hlogininput{
+    display: none;
+} */
+
+
+
+
+
+
+/* Loading animation for the document processing time */
+/* @keyframes loading{
+    0%{transform: rotate(0deg);}
+    25%{transform: rotate(90deg);}
+    50%{transform: rotate(180deg);}
+    75%{transform: rotate(270deg);}
+    100%{transform: rotate(360deg);}
+}
+
+.loading{
+    height: 25px;
+    width: 25px;
+    border-top:5px solid green;
+    border-bottom:5px solid red;  
+    border-radius: 50%;    
+    position: absolute;
+    margin:0% 50%;
+    z-index: 5;
+    animation: loading 1.5s linear infinite;
+    display: none;
+} */

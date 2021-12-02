@@ -1,0 +1,178 @@
+*{
+    padding: 0;
+    margin:0;
+}
+
+
+
+.navbar{
+    max-width: 100%;
+    background: rgb(177, 105, 206);
+    display: flex;
+    height:50px;
+}
+
+.title{
+    font-size: 28px;
+    font-family:'Ballet';
+    font-weight: bold;
+    color:orange;
+    position: absolute;
+    left:25px;
+}
+
+.menu{
+    margin:0 auto;
+}
+
+.menulist{
+    display: flex;
+    width:180px;
+    margin: auto;
+}
+
+.menulist>li{
+    list-style: none;
+    margin: 0 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.menulist>li:hover{
+    cursor: pointer;    
+    color: blue;
+}
+
+.search{
+    margin-top: 25px;
+    text-align: right;
+    position: absolute;
+    right: 0;
+    width: 210px;
+    opacity:0;
+}
+
+.search>input{
+    background: none;
+    border:0.5px solid black;
+    border-radius: 3px;
+    padding: 0 5px;
+    width: 170px;
+    height: 20px;
+}
+
+.search>input:focus{
+    outline: none;
+}
+
+.srchbtn{
+    background: none;
+    border:none;
+    font-size:18px;
+}
+
+
+.logoutbtn{
+	margin:2px 0 0 4px;
+	cursor:pointer;
+	color:navy;
+	font-weight:bold;
+}
+
+.logoutbtn:hover{
+	color:white;
+}
+
+
+
+
+.change{
+    width:600px;
+    margin: auto;
+}
+
+fieldset{
+    width: 600px;
+    margin: auto;
+    padding: 0;
+    border-radius: 5px;
+}
+
+input{
+    width: 98%;
+    padding: 0 2px;
+    border: none;
+}
+
+input:focus{
+    outline: none;
+}
+
+fieldset>.inputstyle{   
+    padding: 2.5px 0;
+    width: 400px;
+    border-radius: 5px;
+}
+
+.inputstyle>input{
+    width: 98%;
+    padding: 0 2px;
+    border: none;
+}
+
+.inputstyle>input:focus{
+    outline: none;
+}
+
+
+
+
+
+
+/* responsiveness........................... */
+@media  screen and (max-width:660px){
+    .search{
+        z-index: 1;
+        margin: 25px 0 0 0;
+        width: 50%;
+    }
+
+    .title{
+        width:60px;
+    }
+}
+
+
+@media  screen and (max-width:570px){
+    .search{
+        position: absolute;
+        top:2px;
+        width: 100%;
+    }
+
+}
+
+
+/* loading syles......... */
+@keyframes loading{
+    0%{transform: rotate(0deg);}
+    25%{transform: rotate(90deg);}
+    50%{transform: rotate(180deg);}
+    75%{transform: rotate(270deg);}
+    100%{transform: rotate(360deg);}
+}
+
+#loading{
+    width: 30px;
+    height: 30px;
+    border-top:10px solid red;
+    border-bottom:10px solid blue;
+    border-left:5px solid green;
+    border-right:5px solid yellow ;
+    border-radius: 50%;
+    position: absolute;
+    opacity: 1;
+    top:49%;
+    left: 49%;
+    animation: loading 2s linear infinite;
+}
