@@ -35,7 +35,7 @@ public class FeeReport {
 		if (con != null) {
 			System.out.println("Connection Successful...");
 			System.out.println("Checking database ....");
-			if (checkDB(con)) {
+			if (!checkDB(con)) {
 				System.out.print("Enter ADMIN username : ");
 				String user = in.nextLine();
 				System.out.print("Enter ADMIN password : ");
@@ -48,7 +48,6 @@ public class FeeReport {
 				} else
 					System.err.println("Error creating database please check manually, "
 							+ "\nif database created please drop it and restart the application.");
-
 			}
 			this.menu();
 		} else {
@@ -116,10 +115,10 @@ public class FeeReport {
 			break;
 		case '3':
 			try {
-				con.close(); // closing database connection and exist fromthe application
-				System.out.println("Database connection ended succesfully...");
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+				finalize();
+			} catch (Throwable e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 			System.exit(0);
 			break;
@@ -128,12 +127,13 @@ public class FeeReport {
 			menu();
 		}
 	}
-
+	
 	@Override
 	protected void finalize() throws Throwable {
 		in.close();
 		if (!con.isClosed()) {
 			con.close();
+			System.out.println("Database connection ended succesfully...");
 		}
 	}
 
