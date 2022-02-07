@@ -25,7 +25,7 @@ public class FeeReport {
 			System.out.print("Enter ADMIN password : ");
 			String pass = in.nextLine();
 			System.out.println("Creating filesystem ...");
-			if (createDB(user, pass)) {
+			if (createDB(pass,user)) {
 				System.out.println("Filesystem created successfully ....");
 				System.out.println("Creating admin ...");
 
@@ -70,7 +70,7 @@ public class FeeReport {
 	}
 
 	// create DB
-	private boolean createDB(String user, String pass) {
+	private boolean createDB(String pass,String user) {
 
 		try {
 			File dir = new File(System.getProperty("user.home") + "\\feereport");

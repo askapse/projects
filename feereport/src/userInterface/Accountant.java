@@ -3,16 +3,21 @@ package userInterface;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
-import database.AccountantDataQuery;
+import database.AccountantData;
+import database.AccountantDataF;
+import database.AccountantDataMap;
 import entities.Student;
 
-public class Accountant extends AccountantDataQuery {
+public class Accountant{
 	Scanner in;
-
-	Accountant() {
+	AccountantDataMap acd;
+	
+	Accountant(boolean flag) {
+		//check user selection fot the data operations on
+		if(flag) acd = new AccountantData();
+		else acd = new AccountantDataF();
 		in = new Scanner(System.in);
-		while (!login())
-			;
+		while (!login());
 	}
 
 //	accountant authorization 
@@ -21,8 +26,8 @@ public class Accountant extends AccountantDataQuery {
 		String user = in.nextLine();
 		System.out.print("Password : ");
 		String pass = in.nextLine();
-		if (checkUser(user)) {
-			if (checkPass(user, pass)) {
+		if (acd.checkUser(user)) {
+			if (acd.checkPass(user, pass)) {
 				menu();
 				return true;
 			} else {
@@ -60,7 +65,7 @@ public class Accountant extends AccountantDataQuery {
 			while (!(rl = in.nextLine()).trim().matches("[0-9]{1,}")) {
 				System.out.print("Enter valid roll no. : ");
 			}
-			if (!checkStudent(Integer.parseInt(rl))) {
+			if (!acd.checkStudent(Integer.parseInt(rl))) {
 				st.setRoll(Integer.parseInt(rl));
 				flag = true;
 			}
@@ -143,7 +148,7 @@ public class Accountant extends AccountantDataQuery {
 		// set due fee
 		st.setDue((st.getTfee() - st.getPaid()));
 
-		if (saveStudent(st))
+		if (acd.saveStudent(st))
 			System.out.print("Student added successfully...\n");
 		else
 			System.err.println("Error adding student ....\n");
@@ -154,7 +159,7 @@ public class Accountant extends AccountantDataQuery {
 
 	// view student in the system
 	private void viewStudent() {
-		Student st[] = getStudent();
+		Student st[] = acd.getStudent();
 		if (st.length == 0)
 			System.out.println("No record found ....");
 		else {
@@ -182,7 +187,7 @@ public class Accountant extends AccountantDataQuery {
 			while (!(rl = in.nextLine()).trim().matches("[0-9]{1,}")) {
 				System.out.print("Enter valid roll no. : ");
 			}
-			if (checkStudent(Integer.parseInt(rl))) {
+			if (acd.checkStudent(Integer.parseInt(rl))) {
 				r = (Integer.parseInt(rl));
 				flag = true;
 			}
@@ -190,7 +195,7 @@ public class Accountant extends AccountantDataQuery {
 		flag = false;
 
 		// get student previous details
-		Student s = getStudent(r);
+		Student s = acd.getStudent(r);
 		if (s != null) {
 			while (!flag) {
 				char ch = ' ';
@@ -223,7 +228,7 @@ public class Accountant extends AccountantDataQuery {
 					while (!(name = in.nextLine()).trim().matches("[A-Za-z ]+")) {
 						System.out.print("\nInvalid re-enter : ");
 					}
-					if (updateStudent(r, "name", name))
+					if (acd.updateStudent(r, "name", name))
 						System.out.println("Name updated successfully ...");
 					else
 						System.err.println("Error.... ");
@@ -235,7 +240,7 @@ public class Accountant extends AccountantDataQuery {
 					while (!(email = in.nextLine()).trim().matches("[A-Za-z0-9]+[@][a-z]+[.][a-z]+")) {
 						System.out.print("Invalid e-mail re-enter : ");
 					}
-					if (updateStudent(r, "email", email))
+					if (acd.updateStudent(r, "email", email))
 						System.out.println("E-mail updated successfully ...");
 					else
 						System.err.println("Error.... ");
@@ -247,7 +252,7 @@ public class Accountant extends AccountantDataQuery {
 					while (!(mobile = in.nextLine()).trim().matches("[0-9]{10}")) {
 						System.out.print("Invalid re-enter : ");
 					}
-					if (updateStudent(r, "contact", mobile))
+					if (acd.updateStudent(r, "contact", mobile))
 						System.out.println("Contact updated successfully ...");
 					else
 						System.err.println("Error.... ");
@@ -259,7 +264,7 @@ public class Accountant extends AccountantDataQuery {
 					while (!(course = in.nextLine()).trim().matches("[A-Za-z]+")) {
 						System.out.print("Invalid re-enter : ");
 					}
-					if (updateStudent(r, "course", course))
+					if (acd.updateStudent(r, "course", course))
 						System.out.println("Course updated successfully ...");
 					else
 						System.err.println("Error.... ");
@@ -271,7 +276,7 @@ public class Accountant extends AccountantDataQuery {
 					while (!(address = in.nextLine()).trim().matches("[A-Za-z0-9 -]+")) {
 						System.out.print("Invalid characters re-enter : ");
 					}
-					if (updateStudent(r, "address", address))
+					if (acd.updateStudent(r, "address", address))
 						System.out.println("Address updated successfully ...");
 					else
 						System.err.println("Error.... ");
@@ -283,7 +288,7 @@ public class Accountant extends AccountantDataQuery {
 					while (!(city = in.nextLine()).trim().matches("[A-Za-z]+")) {
 						System.out.print("Invalid characters re-enter : ");
 					}
-					if (updateStudent(r, "city", city))
+					if (acd.updateStudent(r, "city", city))
 						System.out.println("City updated successfully ...");
 					else
 						System.err.println("Error.... ");
@@ -295,7 +300,7 @@ public class Accountant extends AccountantDataQuery {
 					while (!(state = in.nextLine()).trim().matches("[A-Za-z]+")) {
 						System.out.print("Invalid characters re-enter : ");
 					}
-					if (updateStudent(r, "state", state))
+					if (acd.updateStudent(r, "state", state))
 						System.out.println("State updated successfully ...");
 					else
 						System.err.println("Error.... ");
@@ -307,7 +312,7 @@ public class Accountant extends AccountantDataQuery {
 					while (!(contry = in.nextLine()).trim().matches("[A-Za-z ]+")) {
 						System.out.print("Invalid characters re-enter : ");
 					}
-					if (updateStudent(r, "contry", contry))
+					if (acd.updateStudent(r, "contry", contry))
 						System.out.println("Contry updated successfully ...");
 					else
 						System.err.println("Error.... ");
@@ -339,13 +344,13 @@ public class Accountant extends AccountantDataQuery {
 			while (!(rl = in.nextLine()).trim().matches("[0-9]{1,}")) {
 				System.out.print("Enter valid roll no. : ");
 			}
-			if (checkStudent(Integer.parseInt(rl))) {
+			if (acd.checkStudent(Integer.parseInt(rl))) {
 				r = (Integer.parseInt(rl));
 				flag = true;
 			}
 		}
 		flag = false;
-		float paiddue[] = duePaidFee(r); // 0 index is paid fee and 1 index is due fee
+		float paiddue[] = acd.duePaidFee(r); // 0 index is paid fee and 1 index is due fee
 		if (paiddue.length == 0) {
 			System.out.println("No record found ");
 		} else {
@@ -366,7 +371,7 @@ public class Accountant extends AccountantDataQuery {
 			}
 
 			// run update database due fee from here
-			if (updateDueFee(r, paiddue[0] + fee, paiddue[1] - fee)) {
+			if (acd.updateDueFee(r, paiddue[0] + fee, paiddue[1] - fee)) {
 				System.out.print("\nDue fee updated succesfully of roll no. :" + r);
 			} else {
 				System.err.print("\nError updating due fee ");

@@ -9,9 +9,9 @@ import java.util.Arrays;
 import entities.Student;
 import userInterface.FeeReport;
 
-public class AccountantDataQuery {
+public class AccountantData implements AccountantDataMap{
 	// check username avilability
-	protected boolean checkUser(String user) {
+	public boolean checkUser(String user) {
 		try {
 			Statement st = FeeReport.con.createStatement();
 			st.execute("use freereport");
@@ -29,7 +29,7 @@ public class AccountantDataQuery {
 	}
 
 	// checking username and password fromthe user is matched or not
-	protected boolean checkPass(String user, String pass) {
+	public boolean checkPass(String user, String pass) {
 		try {
 			Statement st = FeeReport.con.createStatement();
 			ResultSet rs = st.executeQuery("select name,password from accountant where " + "name='" + user + "'");
@@ -48,7 +48,7 @@ public class AccountantDataQuery {
 	}
 
 	// add new student to the database
-	protected boolean saveStudent(Student s) {
+	public boolean saveStudent(Student s) {
 		try {
 			PreparedStatement pst = FeeReport.con
 					.prepareStatement("insert into student values(?,?,?,?,?,?,?,?,?,?,?,?)");
@@ -76,7 +76,7 @@ public class AccountantDataQuery {
 	}
 
 	// get student from the database and return a array of the student object
-	protected Student[] getStudent() {
+	public Student[] getStudent() {
 		try {
 			Statement st = FeeReport.con.createStatement();
 			ResultSet rs = st.executeQuery("select *from student");
@@ -106,7 +106,7 @@ public class AccountantDataQuery {
 		}
 	}
 
-	protected Student getStudent(int roll) {
+	public Student getStudent(int roll) {
 		try {
 			Statement st = FeeReport.con.createStatement();
 			ResultSet rs = st.executeQuery("select * from student where roll="+roll);
@@ -133,7 +133,7 @@ public class AccountantDataQuery {
 		}
 	}
 	// check student by the roll no.
-	protected boolean checkStudent(int roll) {
+	public boolean checkStudent(int roll) {
 		try {
 			Statement st = FeeReport.con.createStatement();
 			ResultSet rs = st.executeQuery("select roll from student where roll=" + roll);
@@ -146,7 +146,7 @@ public class AccountantDataQuery {
 		}
 	}
 
-	protected float[] duePaidFee(int roll) {
+	public float[] duePaidFee(int roll) {
 		try {
 			Statement st = FeeReport.con.createStatement();
 			ResultSet rs = st.executeQuery("select paidfee,duefee from student where roll=" + roll);
@@ -163,7 +163,7 @@ public class AccountantDataQuery {
 		}
 	}
 
-	protected boolean updateDueFee(int roll, float paid, float due) {
+	public boolean updateDueFee(int roll, float paid, float due) {
 		try {
 			PreparedStatement pst = FeeReport.con.prepareStatement("update student set paidfee=? , duefee=? where roll=?");
 			pst.setFloat(1, paid);
@@ -177,7 +177,7 @@ public class AccountantDataQuery {
 		}
 	}
 	
-	protected boolean updateStudent(int roll,String field,String value) {
+	public boolean updateStudent(int roll,String field,String value) {
 		try {
 			PreparedStatement pst = FeeReport.con.prepareStatement("update student set "+field+"=? where roll=?");
 			pst.setString(1, value);

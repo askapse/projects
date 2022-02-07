@@ -2,12 +2,19 @@ package userInterface;
 
 import java.util.Scanner;
 
-import database.AdminDataQuery;
+import database.AdminData;
+import database.AdminDataF;
+import database.AdminDataMap;
 import entities.Accountant;
 
-public class Admin extends AdminDataQuery{
+public class Admin{
 	Scanner in;
-	Admin(){
+	AdminDataMap add;
+	Admin(boolean flag){
+		//check user selection fot the data operations on
+		if(flag) add = new AdminData();
+		else add = new AdminDataF();
+		
 		in = new Scanner(System.in);		
 		while(!login());
 	}
@@ -17,8 +24,8 @@ public class Admin extends AdminDataQuery{
 		String user = in.nextLine();
 		System.out.print("Password : ");
 		String pass = in.nextLine();
-		if(checkUser(user)) {
-			if(checkPass(user, pass)) {
+		if(add.checkUser(user)) {
+			if(add.checkPass(user, pass)) {
 				menu();
 				return true;
 			}else {
@@ -45,7 +52,7 @@ public class Admin extends AdminDataQuery{
 			while(!(name=in.nextLine()).matches("[A-Za-z]+")) {
 				System.out.print("\nInvalid name please re-enter : ");
 			}
-			if(!checkACName(name)) {		//check avilability of the name for the accountant
+			if(!add.checkACName(name)) {		//check avilability of the name for the accountant
 				flag=true;
 				ac.setName(name);
 			}else {
@@ -70,7 +77,7 @@ public class Admin extends AdminDataQuery{
 		ac.setContact(mobile);
 		
 		
-		if(saveAccountant(ac)) {
+		if(add.saveAccountant(ac)) {
 			System.out.print("\nAccountant added succesfully ...\n");
 		}else System.err.print("\nError please try again later...\n");
 
@@ -79,12 +86,12 @@ public class Admin extends AdminDataQuery{
 	}
 	
 	private void viewAC() {
-		Accountant [] ac = getAccountantList();
+		Accountant [] ac = add.getAccountantList();
 		if(ac.length==0) {
 			System.out.println("No recoreds found");
 		}else {
 			for(Accountant a : ac) {
-				System.out.printf("%-30s  %-30s  %-10s  %s\n1",a.getName(),a.getEmail(),a.getContact(),a.getPassword());
+				System.out.printf("%-30s  %-30s  %-10s  %s\n",a.getName(),a.getEmail(),a.getContact(),a.getPassword());
 			}
 		}
 		//menu open for the admin panel

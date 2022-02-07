@@ -1,6 +1,8 @@
 package entities;
 
-public class Accountant {
+import java.io.Serializable;
+
+public class Accountant implements Serializable{
 	private String name;
 	private String password;
 	private String email;
