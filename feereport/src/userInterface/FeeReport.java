@@ -13,7 +13,7 @@ import java.util.Scanner;
 
 public class FeeReport {
 	Scanner in;
-	public static FeeReport freereport;
+	public static FeeReport feereport;
 	static Admin admin;
 	static Accountant accountant;
 	static public Connection con;
@@ -22,7 +22,7 @@ public class FeeReport {
 
 	public FeeReport() {
 		in = new Scanner(System.in);
-		freereport = this;
+		feereport = this;
 		boolean f = false;
 		System.out.println("Select the operation mode ....\n1.Database mode \n2.Filesystem mode");
 		System.out.print("\nEnter mode : ");		

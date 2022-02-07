@@ -101,7 +101,7 @@ public class Admin{
 	private void logout() {
 		FeeReport.admin = null;
 		System.out.println("Admin logged off......");
-		FeeReport.freereport.menu();		
+		FeeReport.feereport.menu();		
 	}
 void menu(){		
 		char ch=' ';

@@ -385,7 +385,7 @@ public class Accountant{
 	private void logout() {
 		FeeReport.accountant = null;
 		System.out.println("Accountant logged off......");
-		FeeReport.freereport.menu();
+		FeeReport.feereport.menu();
 	}
 
 	void menu() {
