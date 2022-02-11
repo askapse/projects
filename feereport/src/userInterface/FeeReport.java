@@ -247,7 +247,7 @@ public class FeeReport {
 			con.close();
 			System.out.println("Database connection ended succesfully...");
 		} else {
-			System.out.println("Exitted from application.....");
+			System.out.println("Existed from application.....");
 		}
 	}
 

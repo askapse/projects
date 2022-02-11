@@ -209,9 +209,9 @@ public class Accountant{
 				System.out.println("8. Contry ");
 				System.out.println("9. Exit ");
 				System.out.print("\nSelect :");
+//				System.out.print("Select : ");
 				while (!Character.isDigit(ch)) {
-					try {
-						System.out.print("Select : ");
+					try {						
 						ch = (char) ((in.nextLine()).trim().charAt(0));
 					} catch (Exception e) {
 						ch = ' ';
@@ -307,7 +307,7 @@ public class Accountant{
 					break;
 				case '8':
 					String contry;
-					System.out.print("\nContry : ");
+					System.out.print("\nContry : "+s.getContry());
 					System.out.print("\nnew Contry : ");
 					while (!(contry = in.nextLine()).trim().matches("[A-Za-z ]+")) {
 						System.out.print("Invalid characters re-enter : ");
@@ -321,8 +321,9 @@ public class Accountant{
 					flag = true;
 					break;
 				default:
-					System.out.println("Select correct option ....\n");
+					System.out.println("Select correct option :");
 				}
+				s = acd.getStudent(r);
 
 			}
 		} else {
@@ -395,10 +396,10 @@ public class Accountant{
 		System.out.println("3. Edit Student");
 		System.out.println("4. Due Fee");
 		System.out.println("5. Logout\n");
-
+		
+		System.out.print("Select : ");
 		while (!Character.isDigit(ch)) {
-			try {
-				System.out.print("Select : ");
+			try {				
 				ch = (char) ((in.nextLine()).trim().charAt(0));
 			} catch (Exception e) {
 				ch = ' ';
