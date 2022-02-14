@@ -1,0 +1,202 @@
+@charset "ISO-8859-1";
+
+* {
+	padding: 0;
+	margin: 0;
+}
+
+.studs {
+	width: 500px;
+	margin: 0 auto;
+}
+
+.sttable {
+	width: 100%;
+	border-collapse: collapse;
+}
+
+tr {
+	width: 100%;
+	height: 30px;
+}
+
+/* size of the roll no column */
+tr>th:nth-child(1) {
+	width: 10%;
+}
+
+tr>td:nth-child(1) {
+	width: 10%;
+}
+
+/* size of the name column */
+tr>th:nth-child(2) {
+	width: 55%;
+}
+
+tr>td:nth-child(2) {
+	width: 55%;
+}
+
+/* size of the mobile column */
+tr>th:nth-child(3) {
+	width: 25%;
+}
+
+tr>td:nth-child(3) {
+	width: 25%;
+}
+
+tr>td:nth-child(5) {
+	display: none;
+}
+
+tr>th:nth-child(5) {
+	display: none;
+}
+
+tr>td:nth-child(6) {
+	display: none;
+}
+
+tr>th:nth-child(6) {
+	display: none;
+}
+
+td {
+	border: 1px solid black;
+}
+
+th {
+	border: 1px solid black;
+}
+
+td>a {
+	text-decoration: none;
+	cursor: pointer;
+}
+
+@media print {
+	
+	.studs{
+		width: 100%;
+	}
+	
+	.printbtn{
+		display: none;
+	}
+	tr>td:nth-child(4) {
+		display: none;
+	}
+	tr>th:nth-child(4) {
+		display: none;
+	}
+	tr>td:nth-child(5) {
+		display: table-cell;
+	}
+	tr>th:nth-child(5) {
+		display: table-cell;
+	}
+	tr>td:nth-child(6) {
+		display: table-cell;
+	}
+	tr>th:nth-child(6) {
+		display: table-cell;
+	}
+	.navbar {
+		display: none;
+	}
+}
+
+.studsnf {
+	width: 500px;
+	margin: 0 auto;
+	line-height: 86vh;
+	text-align: center;
+}
+
+
+.printbtn{
+	width:500px;
+	margin: 30px auto;
+	text-align: center;
+}
+
+.printbtn>button{
+	height: 25px;
+	width:75px;
+	background: #a3d9eb;
+	border-radius: 2px;
+}
+
+
+/* show student on the class page */
+.layer{
+	background: rgba(219, 219, 219,0.7);
+	opacity: 1;
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top:0;
+	left:0;
+}
+
+.addclass{
+	width:500px;
+	height:400px;
+	z-index: 10;
+	margin:0 auto;
+	background: white;
+	border:1px solid black;
+	box-shadow: 8px 3px 60px;
+	border-radius:8px;
+	margin-top:20px;
+}
+
+.addclasstitle{
+	height: 20px;	
+}
+
+.closer{
+	width:30px;
+	text-align: center;
+	float:right;
+	line-height: 25px;
+	cursor: default;	
+}
+
+.closer:hover{
+	color:red;
+	background: gray;
+	border-radius:8px;
+}
+
+.form>fieldset {
+	width: 90%;
+	margin: 5px auto;
+	border-radius: 10px;
+}
+
+.form>fieldset>input {
+	width: 98%;
+	padding: 3px;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	font-weight: bold;
+}
+
+.btns{
+	position:relative;
+	top:150px;	
+	width: 480px;
+    margin: 10px;
+    text-align: center;
+}
+
+.btns>button{
+	height: 25px;
+	width:75px;
+	background: #a3d9eb;
+	border-radius: 2px;
+}

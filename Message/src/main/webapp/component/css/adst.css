@@ -1,0 +1,79 @@
+@charset "ISO-8859-1";
+*{
+	margin:0;
+	padding:0;
+}
+
+.adstdsec{
+	width:500px;
+	margin:20px auto;	
+}
+
+fieldset {
+	border-radius: 5px;
+	margin: 10px 0;
+}
+
+fieldset>input {
+	width:98%;
+	border:none;
+	outline: none;
+	font-weight: bold;
+}
+
+fieldset>select{
+	width:98%;
+	border:none;
+}
+
+fieldset>textarea{
+	width:98%;
+	padding-left:2px;
+	font-weight: bold;
+	height:50px;
+	max-width: 480px;
+	min-width: 98%;
+	margin: 0 2.5px;
+	border:none;
+	outline: none;
+}
+
+.row{
+	display: flex;	
+}
+
+.row>fieldset{
+	width:45%;
+		
+}
+
+.row>fieldset:nth-child(1) {
+margin-right:9%;	
+}
+
+.pas{
+	display: flex;
+}
+
+.pas>input:nth-child(3) {
+	width: 20px;
+}
+
+.btns{
+	display: flex;
+	margin: 0 155px;
+}
+
+button{
+	height: 25px;
+	width:75px;
+	background: #a3d9eb;
+	border-radius: 2px;
+	margin:10px;
+}
+
+
+
+
+
+

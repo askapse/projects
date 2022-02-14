@@ -1,0 +1,45 @@
+@charset "ISO-8859-1";
+
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.navbar {
+	background: orange;
+	height: fit-content;
+}
+
+.username {
+	color: blue;
+	margin-left: 10px;
+}
+
+.allmenu {
+	width: fit-content;
+	margin: 0 auto;
+	padding-top: 20px;
+}
+
+.menu {
+	display: flex;
+}
+
+.menu>li {
+	list-style: none;
+	color: red;
+	font-size: 24px;
+	margin: 0 10px;
+	padding: 0 5px;
+}
+
+.menu>li:hover {
+	background: #acacff;
+	border-radius: 5px;	
+}
+
+.menu>li>a {
+	text-decoration: none;
+	color: red;
+	cursor: pointer;
+}
