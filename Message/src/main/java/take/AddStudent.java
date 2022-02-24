@@ -53,6 +53,7 @@ public class AddStudent extends HttpServlet {
 		
 		if(Database.st.checkRoll(st.getRoll(),((InClass)session.getAttribute("class")).getId())) {
 			session.setAttribute("student", st);
+			session.removeAttribute("update");
 			session.setAttribute("message", "Given roll number previously added...");
 			response.sendRedirect("./addstudent.jsp");
 			return;

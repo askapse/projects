@@ -24,12 +24,12 @@
 		<div class="allmenu">
 			<ul class="menu">
 				<li><a href="./">Home</a></li>
-				<%
-				if (session.getAttribute("class") != null) {
-				%>
-
+				<li><a href="faculty.jsp">Faculty</a> <%
+ if (session.getAttribute("class") != null) {
+ %>
 				<li><a href="addstudent.jsp">Add Student</a></li>
-				<li><a href="class.jsp?id=<%=((InClass)session.getAttribute("class")).getId()%>">Class</a></li>
+				<li><a
+					href="class.jsp?id=<%=((InClass) session.getAttribute("class")).getId()%>">Class</a></li>
 
 				<%
 				}

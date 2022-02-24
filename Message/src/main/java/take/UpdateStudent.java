@@ -59,6 +59,14 @@ public class UpdateStudent extends HttpServlet {
 		st.setAddress(request.getParameter("address"));
 		st.setClassid(cls.getId());
 
+		if(Database.st.checkRoll(st.getRoll(), cls.getId(),st.getId())) {
+			session.setAttribute("message", "Given roll number previously added...");
+			session.setAttribute("student", st);
+			response.sendRedirect("viewupdatestudent?id="+st.getId());
+			return;
+		}
+		
+		
 		if (Database.st.addStudent(st)) {
 			session.setAttribute("message", "Student updated successfully...");
 			response.sendRedirect("class.jsp?id="+cls.getId());

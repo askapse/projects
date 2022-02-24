@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import entities.InClass;
+import entities.Subject;
 
 public abstract class ClassOperation {
 
@@ -15,12 +17,16 @@ public abstract class ClassOperation {
 			Session session = Factory.classtable.openSession();
 			session.beginTransaction();
 
-			session.save(cls);
-
+			session.saveOrUpdate(cls);								
+			if(!Database.msg.checkTable("message"+cls.getId()))
+				Database.msg.createTable("message"+cls.getId());
+			
 			session.getTransaction().commit();
+			
 			session.close();
 			return true;
 		} catch (Exception e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -69,6 +75,8 @@ public abstract class ClassOperation {
 			ss.getTransaction().commit();
 			cs.beginTransaction();
 			cs.createQuery("delete from InClass where id=" + id).executeUpdate();
+			if(Database.msg.checkTable("message"+id))
+				Database.msg.dropTable("message"+id);
 			cs.getTransaction().commit();
 
 			cs.close();
@@ -78,6 +86,64 @@ public abstract class ClassOperation {
 			System.out.println(e.getMessage());
 			return false;
 		}
+	}
 
+	// subject manipulation to be here
+
+	public boolean addSubject(Subject s) {
+		try {
+			Session session = Factory.subjecttable.openSession();
+			session.beginTransaction();
+
+			session.saveOrUpdate(s);
+
+			session.getTransaction().commit();
+			session.close();
+			return true;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
+	public boolean removeSubject(int sid, int cid) {
+		try {
+			Session session = Factory.subjecttable.openSession();
+			session.beginTransaction();
+
+			Query<Subject> q = session.createQuery("delete from Subject where id= :sid and cid= :cid");
+			q.setParameter("sid", sid);
+			q.setParameter("cid", cid);
+			int i = q.executeUpdate();
+
+			session.getTransaction().commit();
+			session.close();
+			if (i > 0)
+				return true;
+			return false;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return false;
+		}
+	}
+
+	// get subjects belogns to the perticular class
+	public List<Subject> getSubjects(int cid) {
+		List<Subject> l = new ArrayList<>();
+		try {
+			Session session = Factory.subjecttable.openSession();
+			session.beginTransaction();
+
+			Query<Subject> q = session.createQuery("from Subject where cid= :cid");
+			q.setParameter("cid", cid);
+			l = q.getResultList();
+
+			session.getTransaction().commit();
+			session.close();
+			return l;
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+			return l;
+		}
 	}
 }

@@ -27,6 +27,7 @@
 	//remove session class attributes
 	session.removeAttribute("class");
 	session.removeAttribute("stdid");
+	session.removeAttribute("fid");
 	//checking another page request fromteh user by providing id
 	/* String id = request.getParameter("id");
 	if (id != null) {
@@ -110,7 +111,7 @@
 				</fieldset>
 
 				<div class="btns">
-					<button type="submit" onclick="save()">Add Class</button>
+					<button type="submit">Add Class</button>
 					<button class="cl" type="button">close</button>
 				</div>
 			</form>

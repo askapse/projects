@@ -12,11 +12,11 @@ import dao.Database;
 import entities.InClass;
 
 
-@WebServlet("/addclass")
-public class AddClass extends HttpServlet {
+@WebServlet("/updateclass")
+public class UpdateClass extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    public AddClass() {
+    public UpdateClass() {
         super();
        
     }
@@ -24,7 +24,7 @@ public class AddClass extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+//		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	
@@ -36,11 +36,11 @@ public class AddClass extends HttpServlet {
 			return;
 		}
 		
-//		if(session.getAttribute("class")==null) {
-//			session.setAttribute("message",	"Class not found...");
-//			response.sendRedirect("./home.jsp");
-//			return;
-//		}
+		if(session.getAttribute("class")==null) {
+			session.setAttribute("message",	"Class not found...");
+			response.sendRedirect("./home.jsp");
+			return;
+		}
 		
 		String name = request.getParameter("classname");
 		String batch = request.getParameter("batch");
@@ -54,12 +54,13 @@ public class AddClass extends HttpServlet {
 		InClass cls = new InClass();
 		cls.setBatch(batch);
 		cls.setName(name);
+		cls.setId(((InClass)session.getAttribute("class")).getId());
 		if(Database.cls.addClass(cls)) {
-			session.setAttribute("message", "Class added successfully...");
+			session.setAttribute("message", "Class updated successfully...");
 			response.sendRedirect("home.jsp");
 			return;
 		}else {
-			session.setAttribute("message", "Failed to add class ,please try again...");
+			session.setAttribute("message", "Failed to update class ,please try again...");
 			response.sendRedirect("home.jsp");
 			return;
 		}

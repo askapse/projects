@@ -45,23 +45,29 @@ public class ViewUpdateStudent extends HttpServlet {
 		int id = 0;
 		try {
 			id = Integer.parseInt(request.getParameter("id"));
-			if(id == 0) throw new NumberFormatException();
+			if (id == 0)
+				throw new NumberFormatException();
 		} catch (NumberFormatException e) {
 			response.sendRedirect("home.jsp");
 			return;
 		}
 
-		Student st = Database.st.getStudent(id, cls.getId());
+		if (session.getAttribute("student") == null) {
+			Student st = Database.st.getStudent(id, cls.getId());
 
-		if (st == null) {
-			session.setAttribute("message", "Student not found...");
-			response.sendRedirect("home.jsp");
-			return;
+			if (st == null) {
+				session.setAttribute("message", "Student not found...");
+				response.sendRedirect("home.jsp");
+				return;
+			}
+
+			session.setAttribute("student", st);
+			session.setAttribute("update", "update");
+			session.setAttribute("stdid", st.getId());
+		} else {
+			session.setAttribute("update", "update");
+			session.setAttribute("stdid", ((Student) session.getAttribute("student")).getId());
 		}
-
-		session.setAttribute("student", st);
-		session.setAttribute("update", "update");
-		session.setAttribute("stdid", st.getId());
 		RequestDispatcher rd = request.getRequestDispatcher("./addstudent.jsp");
 		rd.forward(request, response);
 //		doGet(request, response);

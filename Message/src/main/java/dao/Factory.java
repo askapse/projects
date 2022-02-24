@@ -4,8 +4,10 @@ import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
 
 import entities.Admin;
+import entities.Faculty;
 import entities.InClass;
 import entities.Student;
+import entities.Subject;
 
 interface Factory {
 	
@@ -20,5 +22,11 @@ interface Factory {
 	
 	//session factory object for the student table used over the dao layer
 	SessionFactory studenttable = con.addAnnotatedClass(Student.class).buildSessionFactory();	
+	
+	//session factory object for the faculty table used over the dao layer
+	SessionFactory facultytable = con.addAnnotatedClass(Faculty.class).buildSessionFactory();
+	
+	//session factory object for the subject table used over the dao layer
+	SessionFactory subjecttable = con.addAnnotatedClass(Subject.class).buildSessionFactory();
 	
 }

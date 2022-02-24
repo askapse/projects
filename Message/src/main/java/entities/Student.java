@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 @Entity
-public class Student {
+public class Student implements Comparable<Student>{
 	@Id
 	@GeneratedValue
 	int id;
@@ -106,5 +106,12 @@ public class Student {
 		return "Student [id=" + id + ", name=" + name + ", dbo=" + dbo + ", classid=" + classid + ", email=" + email
 				+ ", gender=" + gender + ", roll=" + roll + ", mobile=" + mobile + ", address=" + address + ", pass="
 				+ pass + "]";
+	}
+
+	@Override
+	public int compareTo(Student o) {
+		if(this.roll == o.roll) return 0;
+		if(this.roll > o.roll) return 1;
+		else return -1;		
 	}
 }

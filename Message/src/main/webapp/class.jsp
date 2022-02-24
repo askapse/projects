@@ -1,3 +1,7 @@
+<%@page import="entities.Subject"%>
+<%@page import="entities.Faculty"%>
+<%@page import="java.util.Collection"%>
+<%@page import="java.util.TreeSet"%>
 <%@page import="java.util.Set"%>
 <%@page import="java.util.SortedSet"%>
 <%@page import="java.util.Map"%>
@@ -56,6 +60,7 @@ if (incl == null) {
 		}
 	}
 	session.removeAttribute("stdid");
+	session.removeAttribute("fid");
 	%>
 	<%@include file="./component/pages/navbar.jsp"%>
 
@@ -64,7 +69,7 @@ if (incl == null) {
 
 	<!-- student list in the class -->
 	<%
-	TreeMap<Integer, Student> students = Database.st.getClassStudents(incl.getId());
+	TreeSet<Student> students = Database.st.getClassStudents(incl.getId());
 	if (students.size() != 0) {
 	%>
 	<!-- if student found  -->
@@ -79,8 +84,7 @@ if (incl == null) {
 				<th>Password</th>
 			</tr>
 			<%
-			for (Integer key : students.keySet()) {
-				Student st = students.get(key);
+			for (Student st : students) {
 			%>
 			<tr>
 				<td><%=st.getRoll()%></td>
@@ -113,21 +117,100 @@ if (incl == null) {
 	System.gc();
 	%>
 
+
+	<!-- add new class model -->
+	<div class="layer" id="addclass" hidden="true">
+		<section class="addclass">
+			<div class="addclasstitle">
+				<div class="closer cl">
+					<div>X</div>
+				</div>
+			</div>
+			<form action="updateclass" method="POST" class="form" id="addcls">
+				<br> <br>
+				<fieldset>
+					<legend>Class Name</legend>
+					<input type="text" name="classname" required="required"
+						value="<%=incl.getName()%>">
+				</fieldset>
+				<br>
+				<fieldset>
+					<legend>Batch</legend>
+					<input type="text" name="batch" required="required"
+						placeholder="0000-00 format" value="<%=incl.getBatch()%>">
+				</fieldset>
+
+				<div class="btns">
+					<button type="submit">Update</button>
+					<button class="cl" type="button">close</button>
+				</div>
+			</form>
+		</section>
+	</div>
+
 	<div class="printbtn">
 		<button>Print</button>
 		<button>Remove</button>
-		<script type="text/javascript">
-		//print stident list
-		document.getElementsByTagName("button")[0].onclick = () => {
-			window.print();
-		}
-		document.getElementsByTagName("button")[1].onclick = () => {
-			if(window.confirm("You want to remove class")){
-				window.location.replace("./remove");
-			}
-		}
-		</script>
+		<button>Update</button>
+		<button style="font-size: 12px;">Add Subject</button>
 	</div>
+	<script type="text/javascript" src="./component/js/home.js"></script>
+
+
+	<!-- model to add subjects to the class -->
+	<div class="layer" id="addsubject" hidden="true">
+		<section class="addclass">
+			<div class="addclasstitle">
+				<div class="closer cl">
+					<div>X</div>
+				</div>
+			</div>
+			<form action="removesubject" method="POST" class="form" id="addsubs">
+				<br> <br>
+				<fieldset>
+					<legend>Subject Name</legend>
+					<select name="sid" id="subject" required="required"
+						onchange="changesub()">
+						<option value="-2">Select subject</option>
+						<%
+						for (Subject s : Database.cls.getSubjects(incl.getId())) {
+						%>
+						<option value="<%=s.getId()%>"><%=s.getName()%></option>
+						<%
+						}
+						%>
+						<option value="-1">Other</option>
+					</select> 
+					<input type="text" id="subname" name="subname" required="required"
+						placeholder="Enter subject name" hidden="true">
+
+				</fieldset>
+				<br>
+				<fieldset hidden="true" id="facs">
+					<legend>Faculty</legend>
+					<select name="faculty" required="required" id="fcids">
+						<%
+						for (Faculty f : Database.fac.getFaculties()) {
+						%>
+						<option value="<%=f.getId()%>"><%=f.getName()%></option>
+						<%
+						}
+						%>
+					</select>
+				</fieldset>
+
+				<div class="btns">
+					<button type="submit" id="sbtn" hidden="true">Remove</button>
+					<button class="cl" type="button">close</button>
+				</div>
+			</form>
+		</section>
+	</div>
+
+
+
+
+
 
 </body>
 </html>

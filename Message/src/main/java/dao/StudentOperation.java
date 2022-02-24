@@ -1,7 +1,9 @@
 package dao;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.TreeMap;
+import java.util.TreeSet;
 
 import org.hibernate.Session;
 import org.hibernate.query.Query;
@@ -9,7 +11,7 @@ import org.hibernate.query.Query;
 import entities.Student;
 
 public abstract class StudentOperation {
-	// checking email of the student
+	// checking roll number of the student
 	public boolean checkRoll(int roll, int classid) {
 		try {
 			Session session = Factory.studenttable.openSession();
@@ -30,6 +32,30 @@ public abstract class StudentOperation {
 			return false;
 		}
 	}
+	
+	
+	// checking roll number of the student
+		public boolean checkRoll(int roll, int classid,int stid) {
+			try {
+				Session session = Factory.studenttable.openSession();
+				session.beginTransaction();
+
+				Query<String> q = session.createQuery("roll from Student where roll= :r and classid= :cid  and not id= :id");
+				q.setParameter("r", roll);
+				q.setParameter("cid", classid);
+				q.setParameter("id", stid);
+				List<String> l = q.getResultList();
+
+				session.getTransaction().commit();
+				session.close();
+				if (l.size() == 1)
+					return true;
+				else
+					return false;
+			} catch (Exception e) {
+				return false;
+			}
+		}
 
 	// add student to the database
 	public boolean addStudent(Student s) {
@@ -71,8 +97,8 @@ public abstract class StudentOperation {
 	}
 
 	// get class students from the database
-	public TreeMap<Integer, Student> getClassStudents(int id) {
-		TreeMap<Integer, Student> students = new TreeMap<>();
+	public TreeSet<Student> getClassStudents(int id) {
+		TreeSet<Student> students = new TreeSet<>();
 		try {
 			Session session = Factory.studenttable.openSession();
 			session.beginTransaction();
@@ -85,7 +111,7 @@ public abstract class StudentOperation {
 			session.close();
 
 			for (Student s : l) {
-				students.put(s.getRoll(), s);
+				students.add(s);
 			}
 
 			return students;
